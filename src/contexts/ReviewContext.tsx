@@ -55,7 +55,8 @@ export const ReviewProvider: React.FC<ReviewProviderProps> = ({
         (state) => state.reviews,
         (reviews) => {
           setLocalReviews(reviews)
-        }
+        },
+        { equalityFn: (a, b) => a.length === b.length }
       )
       return unsubscribe
     }
@@ -169,8 +170,9 @@ export const ReviewProvider: React.FC<ReviewProviderProps> = ({
         if (currentReview?.id === id) {
           setCurrentReview(updatedReview)
         }
-        await cacheManager.delete(`review:${id}`)
-        await cacheManager.delete('reviews:{}')
+        cacheManager.delete(`review:${id}`)
+        const cacheKey = `reviews:${JSON.stringify(filters)}`
+        cacheManager.delete(cacheKey)
       }
     } catch (err) {
       const errorDetails: ErrorDetails = {
@@ -182,7 +184,7 @@ export const ReviewProvider: React.FC<ReviewProviderProps> = ({
     } finally {
       setLoading(false)
     }
-  }, [currentReview, useStore, store])
+  }, [currentReview, useStore, store, filters])
 
   const deleteReview = useCallback(async (id: string) => {
     setLoading(true)

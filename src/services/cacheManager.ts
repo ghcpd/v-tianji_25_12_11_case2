@@ -53,6 +53,11 @@ class CacheManager {
 
     const size = this.estimateSize(entry)
     
+    const existingEntry = this.memoryCache.get(key)
+    if (existingEntry) {
+      this.currentMemorySize -= this.estimateSize(existingEntry)
+    }
+    
     if (this.currentMemorySize + size > this.maxMemorySize) {
       this.evictLRU()
     }
@@ -155,6 +160,9 @@ class CacheManager {
       const [key, entry] = entries[i]
       this.memoryCache.delete(key)
       this.currentMemorySize -= this.estimateSize(entry)
+      if (this.db) {
+        this.db.delete('cache', key).catch(() => {})
+      }
     }
   }
 

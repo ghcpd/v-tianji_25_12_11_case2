@@ -49,20 +49,20 @@ export const useReviewStore = create<ReviewStore>()(
         
         setReviews: (reviews) => {
           set({ reviews, lastFetchTime: Date.now() }, false, 'setReviews')
-          cacheManager.set('reviews', reviews, { ttl: 300000 })
+          cacheManager.set('reviews', reviews, { ttl: 300000 }).catch(() => {})
         },
 
         setSelectedReview: (selectedReview) => {
           set({ selectedReview }, false, 'setSelectedReview')
           if (selectedReview) {
-            cacheManager.set(`review:${selectedReview.id}`, selectedReview, { ttl: 600000 })
+            cacheManager.set(`review:${selectedReview.id}`, selectedReview, { ttl: 600000 }).catch(() => {})
           }
         },
 
         addReview: (review) => {
           set((state) => {
             const newReviews = [review, ...state.reviews]
-            cacheManager.set('reviews', newReviews, { ttl: 300000 })
+            cacheManager.set('reviews', newReviews, { ttl: 300000 }).catch(() => {})
             return { reviews: newReviews }
           }, false, 'addReview')
         },
@@ -78,8 +78,8 @@ export const useReviewStore = create<ReviewStore>()(
                 ? updatedReview 
                 : state.selectedReview
 
-              cacheManager.set('reviews', newReviews, { ttl: 300000 })
-              cacheManager.set(`review:${id}`, updatedReview, { ttl: 600000 })
+              cacheManager.set('reviews', newReviews, { ttl: 300000 }).catch(() => {})
+              cacheManager.set(`review:${id}`, updatedReview, { ttl: 600000 }).catch(() => {})
 
               return {
                 reviews: newReviews,
@@ -101,7 +101,7 @@ export const useReviewStore = create<ReviewStore>()(
           set((state) => {
             const newReviews = state.reviews.filter((r) => r.id !== id)
             cacheManager.delete(`review:${id}`)
-            cacheManager.set('reviews', newReviews, { ttl: 300000 })
+            cacheManager.set('reviews', newReviews, { ttl: 300000 }).catch(() => {})
             return {
               reviews: newReviews,
               selectedReview: state.selectedReview?.id === id ? null : state.selectedReview,
@@ -133,12 +133,15 @@ export const useReviewStore = create<ReviewStore>()(
           
           try {
             const reviews = await reviewService.getReviews(options || state.filters)
-            cacheManager.set(cacheKey, reviews, { ttl: 300000 })
-            set({ 
-              reviews, 
-              loading: false, 
-              lastFetchTime: Date.now() 
-            }, false, 'fetchReviews:success')
+            await cacheManager.set(cacheKey, reviews, { ttl: 300000 })
+            const currentState = get()
+            if (currentState.filters === (options || state.filters)) {
+              set({ 
+                reviews, 
+                loading: false, 
+                lastFetchTime: Date.now() 
+              }, false, 'fetchReviews:success')
+            }
           } catch (error) {
             const errorDetails: ErrorDetails = {
               code: 'FETCH_REVIEWS_ERROR',
@@ -168,7 +171,7 @@ export const useReviewStore = create<ReviewStore>()(
           
           try {
             const review = await reviewService.getReview(id)
-            cacheManager.set(cacheKey, review, { ttl: 600000 })
+            await cacheManager.set(cacheKey, review, { ttl: 600000 })
             set({ 
               selectedReview: review, 
               loading: false 

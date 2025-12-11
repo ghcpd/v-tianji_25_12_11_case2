@@ -8,9 +8,11 @@ import CreateReview from './pages/CreateReview'
 import Profile from './pages/Profile'
 
 function App() {
+  const useStore = localStorage.getItem('useZustand') === 'true'
+  
   return (
     <AuthProvider>
-      <ReviewProvider>
+      <ReviewProvider useStore={useStore}>
         <Layout>
           <Routes>
             <Route path="/" element={<Dashboard />} />

@@ -140,7 +140,7 @@ class ReviewService {
 
   async getReviews(filters?: FilterOptions): Promise<Review[]> {
     const cacheKey = `reviews:${JSON.stringify(filters)}`
-    const cached = await cacheManager.getAsync<Review[]>(cacheKey)
+    const cached = cacheManager.get<Review[]>(cacheKey)
     if (cached) {
       return cached
     }
