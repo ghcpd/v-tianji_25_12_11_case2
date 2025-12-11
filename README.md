@@ -66,3 +66,7 @@ src/
 └── types/            # TypeScript definitions
 ```
 
+## Technical Discussion
+
+- See [Technical Discussion on Intermittent Behavior and Architectural Consistency](src/TECHNICAL_DISCUSSION_INTERMITTENT_BEHAVIOR.md) for a focused analysis of intermittent data, caching, and state concerns.
+
