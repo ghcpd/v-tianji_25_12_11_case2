@@ -1,0 +1,89 @@
+.code-viewer {
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.code-viewer-header {
+  background-color: #34495e;
+  color: white;
+  padding: 0.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.file-path {
+  font-weight: 600;
+  flex: 1;
+}
+
+.file-language {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin-right: 1rem;
+}
+
+.expand-icon {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.code-content {
+  display: flex;
+  overflow-x: auto;
+}
+
+.line-numbers {
+  background-color: #ecf0f1;
+  padding: 0.5rem 0;
+  user-select: none;
+  min-width: 50px;
+  text-align: right;
+}
+
+.line-number {
+  padding: 0 0.75rem;
+  line-height: 1.5;
+  font-size: 0.875rem;
+  color: #7f8c8d;
+}
+
+.line-number.clickable {
+  cursor: pointer;
+}
+
+.line-number.clickable:hover {
+  background-color: #d5dbdb;
+}
+
+.line-number.selected {
+  background-color: #fff3cd;
+  font-weight: 600;
+}
+
+.code-block {
+  flex: 1;
+  margin: 0;
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  background-color: #f8f9fa;
+}
+
+.code-line {
+  line-height: 1.5;
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+  white-space: pre;
+}
+
+.code-line.selected {
+  background-color: #fff3cd;
+}
+

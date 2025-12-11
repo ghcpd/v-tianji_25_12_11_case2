@@ -1,0 +1,132 @@
+.review-detail {
+  width: 100%;
+}
+
+.review-detail-header {
+  margin-bottom: 1.5rem;
+}
+
+.review-detail-header h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.review-detail-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.review-detail-description {
+  color: #34495e;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+}
+
+.review-detail-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.review-files {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.file-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ecf0f1;
+}
+
+.file-tab {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.file-tab:hover {
+  border-bottom-color: #bdc3c7;
+}
+
+.file-tab.active {
+  border-bottom-color: #3498db;
+  font-weight: 600;
+}
+
+.review-comments-section {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.review-comments-section h2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+}
+
+.comments-list {
+  margin-bottom: 2rem;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.new-comment {
+  border-top: 1px solid #ecf0f1;
+  padding-top: 1.5rem;
+}
+
+.comment-input {
+  width: 100%;
+  min-height: 120px;
+  padding: 0.75rem;
+  border: 1px solid #bdc3c7;
+  border-radius: 4px;
+  font-family: inherit;
+  resize: vertical;
+  margin-bottom: 0.5rem;
+}
+
+.comment-line-info {
+  font-size: 0.875rem;
+  color: #7f8c8d;
+  margin-bottom: 0.5rem;
+}
+
+.submit-comment-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.submit-comment-btn:hover {
+  background-color: #2980b9;
+}
+
+.review-detail-loading,
+.review-detail-error {
+  text-align: center;
+  padding: 3rem;
+  color: #7f8c8d;
+}
+
+.review-detail-error {
+  color: #e74c3c;
+}
+
