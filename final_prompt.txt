@@ -1,0 +1,18 @@
+Prompt
+Context
+
+We're working on a code review platform. The application is functional and meets basic requirements, but we've been experiencing some intermittent issues that are difficult to reproduce and diagnose:
+
+Data occasionally appears stale or out of sync
+
+Unexpected re-renders in certain components
+
+Performance inconsistencies depending on usage patterns
+
+Cache behavior that doesn’t always match expectations
+
+Team confusion around which state management pattern to follow
+
+These issues aren't blocking, but they're concerning enough that we want to understand what's happening before they escalate.
+
+Request
