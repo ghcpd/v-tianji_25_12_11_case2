@@ -1,0 +1,61 @@
+Prompt
+Context
+
+We're working on a code review platform. The application is functional and meets basic requirements, but we've been experiencing some intermittent issues that are difficult to reproduce and diagnose:
+
+Data occasionally appears stale or out of sync
+
+Unexpected re-renders in certain components
+
+Performance inconsistencies depending on usage patterns
+
+Cache behavior that doesn’t always match expectations
+
+Team confusion around which state management pattern to follow
+
+These issues aren't blocking, but they're concerning enough that we want to understand what's happening before they escalate.
+
+Request
+
+Your task is to initiate a structured technical discussion by:
+
+Reviewing how state management, caching, and data flow are implemented
+
+Identifying potential issues, inconsistencies, or architectural tensions
+
+Analyzing trade-offs between the current approaches
+
+Highlighting what the team should be discussing before making any changes
+
+Raising clarifying questions to surface assumptions or missing information
+
+Questions to Consider
+
+What patterns or potential problems might explain the observed symptoms?
+
+Are there architectural inconsistencies worth investigating?
+
+What trade-offs exist in the current design?
+
+What should we discuss as a team before taking action?
+
+Are there any risks or areas of technical debt that should be acknowledged?
+
+Expected Output
+
+Provide a thoughtful analysis that:
+
+Identifies concrete issues or areas of concern
+
+Explains why these patterns may contribute to the current symptoms
+
+Presents multiple perspectives and acknowledges uncertainty
+
+Facilitates a productive engineering discussion rather than providing solutions
+
+Surfaces follow-up questions and next steps
+
+All discussion content must be written into an output file.
+
+Title: Technical Discussion on Intermittent Behavior and Architectural Consistency
+Description: Facilitate a structured engineering discussion by analyzing potential architectural issues related to state management, caching, and data flow, highlighting risks, trade-offs, questions, and areas requiring team alignment.
